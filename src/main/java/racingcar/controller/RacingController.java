@@ -13,6 +13,6 @@ public class RacingController {
 
 
     public void racingStart() {
-        String carNames = inputView.getCarName();
+        String carNames = inputView.getCarNames();
     }
 }
