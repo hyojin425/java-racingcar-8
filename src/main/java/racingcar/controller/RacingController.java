@@ -1,18 +1,21 @@
 package racingcar.controller;
 
+import racingcar.service.RacingService;
 import racingcar.view.InputView;
 
 public class RacingController {
 
-    public RacingController(InputView inputView) {
+    private final RacingService racingService;
+
+    public RacingController(InputView inputView, RacingService racingService) {
         this.inputView = inputView;
+        this.racingService = racingService;
     }
 
     private final InputView inputView;
 
-
-
     public void racingStart() {
-        String carNames = inputView.getCarNames();
+        racingService.initCars(inputView.getCarNames());
+        racingService.racing();
     }
 }
