@@ -5,6 +5,7 @@ import racingcar.domain.Cars;
 import racingcar.validator.Validator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarManager {
     private final Validator validator;
@@ -30,5 +31,23 @@ public class CarManager {
                 .toList();
         validator.validateDuplicateNames(carList);
         return carList;
+    }
+
+    public Cars getWinner(Cars cars) {
+        List<Car> carList = cars.getCarList();
+        int maxDistance = findMacDistance(carList);
+
+        List<Car> winner = carList.stream()
+                .filter(car -> car.getMoveDistance() == maxDistance)
+                .collect(Collectors.toList());
+
+        return new Cars(winner);
+    }
+
+    private int findMacDistance(List<Car> carList) {
+        return carList.stream()
+                .mapToInt(Car::getMoveDistance)
+                .max()
+                .orElse(0);
     }
 }

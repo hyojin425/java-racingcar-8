@@ -36,4 +36,9 @@ public class RacingService {
     public void validRepeatCount(int repeatCount) {
         validator.validRepeatCount(repeatCount);
     }
+
+    public Cars getWinner() {
+        Cars cars = carManager.getCars();
+        return carManager.getWinner(cars);
+    }
 }
