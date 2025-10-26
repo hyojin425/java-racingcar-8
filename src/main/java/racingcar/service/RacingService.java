@@ -2,7 +2,6 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.utils.RandomGenerator;
 import racingcar.validator.Validator;
 
 import java.util.List;
@@ -10,12 +9,10 @@ import java.util.List;
 public class RacingService {
 
     private final CarManager carManager;
-    private RandomGenerator randomGenerator;
     private final Validator validator;
 
-    public RacingService(CarManager carManager, RandomGenerator randomGenerator, Validator validator) {
+    public RacingService(CarManager carManager, Validator validator) {
         this.carManager = carManager;
-        this.randomGenerator = randomGenerator;
         this.validator = validator;
     }
 
@@ -25,13 +22,7 @@ public class RacingService {
     }
 
     public Cars racing() {
-        Cars cars = carManager.getCars();
-        cars.getCarList().forEach(car -> car.move(generateMoveDistance()));
-        return cars;
-    }
-
-    private int generateMoveDistance() {
-        return randomGenerator.getRandomNumber();
+        return carManager.moveCars();
     }
 
     public void validRepeatCount(int repeatCount) {
@@ -39,7 +30,6 @@ public class RacingService {
     }
 
     public Cars getWinner() {
-        Cars cars = carManager.getCars();
-        return carManager.getWinner(cars);
+        return carManager.getWinner();
     }
 }

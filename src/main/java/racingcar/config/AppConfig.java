@@ -19,8 +19,8 @@ public class AppConfig {
         OutputView outputView = new OutputView();
         Validator validator = new Validator();
         RandomGenerator randomGenerator = new RandomGenerator();
-        CarManager carManager = new CarManager(validator);
-        RacingService racingService = new RacingService(carManager, randomGenerator, validator);
+        CarManager carManager = new CarManager(randomGenerator);
+        RacingService racingService = new RacingService(carManager, validator);
 
         this.racingController = new RacingController(racingService, inputView, outputView);
     }

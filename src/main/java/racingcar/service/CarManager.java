@@ -2,17 +2,17 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.validator.Validator;
+import racingcar.utils.RandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarManager {
-    private final Validator validator;
+    private RandomGenerator randomGenerator;
     private Cars cars;
 
-    public CarManager(Validator validator) {
-        this.validator = validator;
+    public CarManager(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
     }
 
     public Cars getCars() {
@@ -25,17 +25,21 @@ public class CarManager {
     }
 
     public List<Car> createCarList(List<String> carNames) {
-        carNames.forEach(validator::validateNameLength);
         List<Car> carList = carNames.stream()
                 .map(Car::new)
                 .toList();
-        validator.validateDuplicateNames(carList);
         return carList;
     }
 
-    public Cars getWinner(Cars cars) {
+    public Cars moveCars() {
+        cars.getCarList().forEach(
+                car -> car.move(randomGenerator.getRandomNumber()));
+        return cars;
+    }
+
+    public Cars getWinner() {
         List<Car> carList = cars.getCarList();
-        int maxDistance = findMacDistance(carList);
+        int maxDistance = findMacDistance(cars.getCarList());
 
         List<Car> winner = carList.stream()
                 .filter(car -> car.getMoveDistance() == maxDistance)

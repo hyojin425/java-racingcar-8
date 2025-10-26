@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.utils.Parser;
+import racingcar.utils.RandomGenerator;
 import racingcar.validator.Validator;
 
 import java.util.List;
@@ -14,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarManagerTest {
 
     private Parser parser;
-    private Validator validator;
     private CarManager carManager;
+    private RandomGenerator randomGenerator;
 
     @BeforeEach
     void setUp() {
         parser = new Parser();
-        validator = new Validator();
-        carManager = new CarManager(validator);
+        randomGenerator = new RandomGenerator();
+        carManager = new CarManager(randomGenerator);
     }
 
     @DisplayName("자동차 이름에 중복이 없는 경우 List<Car>를 생성한다.")

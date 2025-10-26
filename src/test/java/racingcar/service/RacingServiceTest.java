@@ -24,9 +24,9 @@ class RacingServiceTest {
     @BeforeEach
     void setUp() {
         validator = new Validator();
-        carManager = new CarManager(validator);
+        carManager = new CarManager(randomGenerator);
         randomGenerator = new RandomGenerator();
-        racingService = new RacingService(carManager, randomGenerator, validator);
+        racingService = new RacingService(carManager, validator);
     }
 
     @DisplayName("자동차 이름 리스트로 자동차 목록이 초기화되어야 한다.")
