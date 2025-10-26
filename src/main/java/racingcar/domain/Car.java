@@ -10,8 +10,16 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getMoveDistance() {
+        return moveDistance;
+    }
+
     public int move(int n) {
-        if(n >= MIN_NUMBER) {
+        if (n >= MIN_NUMBER) {
             this.moveDistance += n;
         }
         return this.moveDistance;
