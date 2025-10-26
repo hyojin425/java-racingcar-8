@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarManager {
-    private RandomGenerator randomGenerator;
+    private final RandomGenerator randomGenerator;
     private Cars cars;
 
     public CarManager(RandomGenerator randomGenerator) {
