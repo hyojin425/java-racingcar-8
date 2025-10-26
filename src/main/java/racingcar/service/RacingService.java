@@ -18,7 +18,8 @@ public class RacingService {
     }
 
     public void initCars(String carNames) {
-        carManager.createCars(carNames);
+        List<Car> carList = carManager.createCarList(carNames);
+        carManager.createCars(carList);
     }
 
     public void racing() {

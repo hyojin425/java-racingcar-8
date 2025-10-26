@@ -16,17 +16,20 @@ public class CarManager {
         this.validator = validator;
     }
 
-    public void createCars(String carNames) {
+    public List<Car> getCars() {
+        return cars.getCars();
+    }
+
+    public List<Car> createCarList(String carNames) {
         List<Car> carList = parser.parseCarName(carNames)
                 .stream()
                 .map(Car::new)
                 .toList();
-
         validator.validateDuplicateNames(carList);
-        this.cars = new Cars(carList);
+        return carList;
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars createCars(List<Car> carList) {
+        return new Cars(carList);
     }
 }
