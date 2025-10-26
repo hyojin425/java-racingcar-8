@@ -1,6 +1,7 @@
 package racingcar.service;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
 import racingcar.validator.Validator;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class RacingService {
     }
 
     public void racing() {
-        List<Car> cars = carManager.getCars();
-        cars.forEach(car -> car.move(generateMoveDistance()));
+        Cars cars = carManager.getCars();
+        cars.getCarList().forEach(car -> car.move(generateMoveDistance()));
     }
 
     public int generateMoveDistance() {

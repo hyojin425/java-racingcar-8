@@ -9,7 +9,7 @@ public class Cars {
         this.carList = carList;
     }
 
-    public List<Car> getCars() {
+    public List<Car> getCarList() {
         return carList;
     }
 }

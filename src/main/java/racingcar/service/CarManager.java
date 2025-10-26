@@ -16,8 +16,8 @@ public class CarManager {
         this.validator = validator;
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars getCars() {
+        return cars;
     }
 
     public List<Car> createCarList(String carNames) {
@@ -30,6 +30,7 @@ public class CarManager {
     }
 
     public Cars createCars(List<Car> carList) {
-        return new Cars(carList);
+        cars = new Cars(carList);
+        return cars;
     }
 }
