@@ -2,6 +2,7 @@ package racingcar.domain;
 
 public class Car {
 
+    private final int MIN_NUMBER = 4;
     private String name;
     private int moveDistance;
 
@@ -10,6 +11,9 @@ public class Car {
     }
 
     public int move(int n) {
-        return this.moveDistance += n;
+        if(n >= MIN_NUMBER) {
+            this.moveDistance += n;
+        }
+        return this.moveDistance;
     }
 }

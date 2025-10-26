@@ -12,6 +12,7 @@ public class RacingService {
     private Cars cars;
     private RandomGenerator randomGenerator;
     private final Validator validator;
+    private final int MIN_NUMBER = 4;
 
     public RacingService(Parser parser, RandomGenerator randomGenerator, Validator validator) {
         this.parser = parser;
@@ -29,9 +30,11 @@ public class RacingService {
 
     public void racing() {
         cars.getCars().forEach(car -> {
-            IntStream.of(randomGenerator.getRandomNumber())
-                    .filter(validator::isAtLeastMin)
-                    .forEach(car::move);
+            car.move(generateMoveDistance());
         });
+    }
+
+    public int generateMoveDistance() {
+        return randomGenerator.getRandomNumber();
     }
 }
