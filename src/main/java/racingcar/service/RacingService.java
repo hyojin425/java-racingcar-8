@@ -23,9 +23,10 @@ public class RacingService {
         carManager.createCars(carList);
     }
 
-    public void racing() {
+    public Cars racing() {
         Cars cars = carManager.getCars();
         cars.getCarList().forEach(car -> car.move(generateMoveDistance()));
+        return cars;
     }
 
     public int generateMoveDistance() {

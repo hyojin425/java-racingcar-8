@@ -2,15 +2,18 @@ package racingcar.controller;
 
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
     private final RacingService racingService;
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public RacingController(InputView inputView, RacingService racingService) {
-        this.inputView = inputView;
+    public RacingController(RacingService racingService, InputView inputView, OutputView outputView) {
         this.racingService = racingService;
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void start() {
@@ -23,6 +26,10 @@ public class RacingController {
     }
 
     private void startRepeatRacing() {
-        racingService.racing();
+        int repeatCount = Integer.parseInt(inputView.getRepeatCount());
+        outputView.printResultHeader();
+        for (int i = 0; i < repeatCount; i++) {
+            outputView.printRacing(racingService.racing());
+        }
     }
 }
