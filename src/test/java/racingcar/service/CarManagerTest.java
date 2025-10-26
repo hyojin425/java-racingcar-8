@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.util.Parser;
+import racingcar.utils.Parser;
 import racingcar.validator.Validator;
 
 import java.util.List;

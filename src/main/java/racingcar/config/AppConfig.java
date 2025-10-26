@@ -2,9 +2,9 @@ package racingcar.config;
 
 import racingcar.controller.RacingController;
 import racingcar.service.CarManager;
-import racingcar.util.Parser;
+import racingcar.utils.Parser;
 import racingcar.service.RacingService;
-import racingcar.service.RandomGenerator;
+import racingcar.utils.RandomGenerator;
 import racingcar.validator.Validator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

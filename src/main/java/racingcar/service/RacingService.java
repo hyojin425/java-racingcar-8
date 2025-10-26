@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.utils.RandomGenerator;
 import racingcar.validator.Validator;
 
 import java.util.List;
