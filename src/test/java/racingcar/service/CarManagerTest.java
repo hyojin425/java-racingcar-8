@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
 import racingcar.validator.Validator;
 
 import java.util.List;
@@ -44,11 +43,25 @@ class CarManagerTest {
     @Test
     void createCarList_WithDuplicateNames_ShouldThrowException() {
         // given
-        String carNames = "pobi,pobi,jun"; // car1 중복
+        String carNames = "pobi,pobi,jun";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> carManager.createCarList(carNames));
 
         assertEquals("중복된 자동차 이름이 존재합니다: pobi", exception.getMessage());
+    }
+
+    @DisplayName("자동차 이름이 최대 글자 수를 초과하는 경우 IllegalArgumentException 발생한다.")
+    @Test
+    void createCarList_WithNameTooLong_ShouldThrowException() {
+        // given
+        String carNames = "pobighgh,woni,jun";
+
+        // when
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> carManager.createCarList(carNames));
+
+        // then
+        assertEquals("자동차 이름이 최대 글자 수를 초과합니다: pobighgh", exception.getMessage());
     }
 }
