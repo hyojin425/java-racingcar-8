@@ -24,6 +24,7 @@ public class CarManager {
     }
 
     public List<Car> createCarList(List<String> carNames) {
+        carNames.forEach(validator::validateNameLength);
         List<Car> carList = carNames.stream()
                 .map(Car::new)
                 .toList();
