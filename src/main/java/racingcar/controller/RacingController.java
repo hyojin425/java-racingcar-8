@@ -19,6 +19,7 @@ public class RacingController {
     public void start() {
         initCars();
         startRepeatRacing();
+        printWinner();
     }
 
     private void initCars() {
@@ -28,13 +29,17 @@ public class RacingController {
     private void startRepeatRacing() {
         int repeatCount = inputView.getRepeatCount();
         racingService.validRepeatCount(repeatCount);
-        outputView.printResultHeader();
         printRepeatResult(repeatCount);
     }
 
     private void printRepeatResult(int repeatCount) {
+        outputView.printResultHeader();
         for (int i = 0; i < repeatCount; i++) {
             outputView.printRacing(racingService.racing());
         }
+    }
+
+    private void printWinner() {
+        outputView.printWinner(racingService.getWinner());
     }
 }

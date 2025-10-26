@@ -1,6 +1,9 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
+
+import java.util.List;
 
 public class OutputView {
 
@@ -22,5 +25,17 @@ public class OutputView {
         for (int i = 0; i < moveDistance; i++) {
             System.out.print("-");
         }
+    }
+
+    public void printWinner(Cars cars) {
+        String winnerNames = createWinnerNames(cars.getCarList());
+        System.out.print("최종 우승자 : " + winnerNames);
+    }
+
+    private String createWinnerNames(List<Car> carList) {
+        return String.join(", ",
+                carList.stream()
+                        .map(Car::getName)
+                        .toList());
     }
 }
