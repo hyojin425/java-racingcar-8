@@ -29,7 +29,11 @@ public class RacingService {
         return cars;
     }
 
-    public int generateMoveDistance() {
+    private int generateMoveDistance() {
         return randomGenerator.getRandomNumber();
+    }
+
+    public void validRepeatCount(int repeatCount) {
+        validator.validRepeatCount(repeatCount);
     }
 }
