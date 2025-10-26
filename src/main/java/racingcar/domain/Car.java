@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.validator.Validator;
+
 public class Car {
 
     private final int MIN_NUMBER = 4;
