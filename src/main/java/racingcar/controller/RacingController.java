@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import racingcar.domain.Cars;
 import racingcar.service.RacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -28,6 +29,10 @@ public class RacingController {
     private void startRepeatRacing() {
         int repeatCount = Integer.parseInt(inputView.getRepeatCount());
         outputView.printResultHeader();
+        printRepeatResult(repeatCount);
+    }
+
+    private void printRepeatResult(int repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
             outputView.printRacing(racingService.racing());
         }
