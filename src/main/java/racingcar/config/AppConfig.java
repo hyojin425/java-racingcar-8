@@ -15,12 +15,12 @@ public class AppConfig {
 
     public AppConfig() {
         Parser parser = new Parser();
-        InputView inputView = new InputView(parser);
+        InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         Validator validator = new Validator();
         RandomGenerator randomGenerator = new RandomGenerator();
         CarManager carManager = new CarManager(randomGenerator);
-        RacingService racingService = new RacingService(carManager, validator);
+        RacingService racingService = new RacingService(carManager, validator, parser);
 
         this.racingController = new RacingController(racingService, inputView, outputView);
     }

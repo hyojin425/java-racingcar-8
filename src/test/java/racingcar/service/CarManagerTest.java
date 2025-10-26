@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.utils.Parser;
 import racingcar.utils.RandomGenerator;
-import racingcar.validator.Validator;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarManagerTest {
 
@@ -39,31 +39,5 @@ class CarManagerTest {
         assertEquals("pobi", carList.get(0).getName());
         assertEquals("woni", carList.get(1).getName());
         assertEquals("jun", carList.get(2).getName());
-    }
-
-    @DisplayName("자동차 이름에 중복이 있는 경우 IllegalArgumentException 발생한다.")
-    @Test
-    void createCarList_ShouldThrowException_WhenNamesAreDuplicate() {
-        // given
-        List<String> carNames = parser.parseCarName("pobi,pobi,jun");
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> carManager.createCarList(carNames));
-
-        assertEquals("중복된 자동차 이름이 존재합니다: pobi", exception.getMessage());
-    }
-
-    @DisplayName("자동차 이름이 최대 글자 수를 초과하는 경우 IllegalArgumentException 발생한다.")
-    @Test
-    void createCarList_ShouldThrowException_WhenNameTooLong() {
-        // given
-        List<String> carNames = parser.parseCarName("pobighgh,woni,jun");
-
-        // when
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> carManager.createCarList(carNames));
-
-        // then
-        assertEquals("자동차 이름이 최대 글자 수를 초과합니다: pobighgh", exception.getMessage());
     }
 }
