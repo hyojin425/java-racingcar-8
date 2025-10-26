@@ -1,6 +1,7 @@
 package racingcar.config;
 
 import racingcar.controller.RacingController;
+import racingcar.service.CarManager;
 import racingcar.service.Parser;
 import racingcar.service.RacingService;
 import racingcar.service.RandomGenerator;
@@ -16,7 +17,8 @@ public class AppConfig {
         Parser parser = new Parser();
         Validator validator = new Validator();
         RandomGenerator randomGenerator = new RandomGenerator();
-        RacingService racingService = new RacingService(parser, randomGenerator, validator);
+        CarManager carManager = new CarManager(parser, validator);
+        RacingService racingService = new RacingService(carManager, randomGenerator, validator);
 
         this.racingController = new RacingController(inputView, racingService);
     }
