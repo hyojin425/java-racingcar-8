@@ -21,6 +21,7 @@ public class RacingService {
 
     public void initCars(String carNames) {
         List<String> carNameList = getValidCarNames(carNames);
+        validator.validateDuplicateNames(carNameList);
         List<Car> carList = carManager.createCarList(carNameList);
         carManager.createCars(carList);
     }

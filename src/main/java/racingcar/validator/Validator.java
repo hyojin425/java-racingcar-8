@@ -13,12 +13,11 @@ public class Validator {
     private final String ERROR_INVALID_REPEAT_COUNT = "반복 횟수는 양의 정수입니다.";
     private final int MAX_NAME_LENGTH = 5;
 
-    public void validateDuplicateNames(List<Car> cars) {
+    public void validateDuplicateNames(List<String> carNameList) {
         Set<String> names = new HashSet<>();
 
-        cars.stream()
-                .map(Car::getName)
-                .filter(name -> !names.add(name))
+        carNameList.stream()
+                .filter(carName -> !names.add(carName))
                 .findFirst()
                 .ifPresent(duplicateName -> {
                     throw new IllegalArgumentException(ERROR_DUPLICATE_NAMES + duplicateName);
