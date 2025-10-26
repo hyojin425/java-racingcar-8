@@ -11,7 +11,7 @@ class CarsTest {
 
     @DisplayName("Cars 객체 생성 시 carList 저장한다.")
     @Test
-    void create_cars() {
+    void constructor_ShouldStoreCarList_WhenCarsCreated() {
         // given
         Car car1 = new Car("pobi");
         Car car2 = new Car("woni");

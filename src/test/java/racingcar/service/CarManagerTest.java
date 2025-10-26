@@ -26,9 +26,10 @@ class CarManagerTest {
 
     @DisplayName("자동차 이름에 중복이 없는 경우 List<Car>를 생성한다.")
     @Test
-    void createCarList_WithUniqueNames_ShouldSucceed() {
+    void createCarList_ShouldReturnCarList_WhenNamesAreUnique() {
         // given
         List<String> carNames = parser.parseCarName("pobi,woni,jun");
+
         // when
         List<Car> carList = assertDoesNotThrow(() -> carManager.createCarList(carNames));
 
@@ -41,7 +42,7 @@ class CarManagerTest {
 
     @DisplayName("자동차 이름에 중복이 있는 경우 IllegalArgumentException 발생한다.")
     @Test
-    void createCarList_WithDuplicateNames_ShouldThrowException() {
+    void createCarList_ShouldThrowException_WhenNamesAreDuplicate() {
         // given
         List<String> carNames = parser.parseCarName("pobi,pobi,jun");
 
@@ -53,7 +54,7 @@ class CarManagerTest {
 
     @DisplayName("자동차 이름이 최대 글자 수를 초과하는 경우 IllegalArgumentException 발생한다.")
     @Test
-    void createCarList_WithNameTooLong_ShouldThrowException() {
+    void createCarList_ShouldThrowException_WhenNameTooLong() {
         // given
         List<String> carNames = parser.parseCarName("pobighgh,woni,jun");
 

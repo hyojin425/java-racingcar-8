@@ -11,7 +11,7 @@ class CarTest {
     @DisplayName("moveDistance 값이 최소값 이상이면 이동 거리 증가")
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6, 7, 8, 9})
-    void move_test(int randomNumber) {
+    void move_ShouldIncreaseMoveDistance_WhenAboveMinValue(int randomNumber) {
         // given
         Car car = new Car("pobi");
 
@@ -25,7 +25,7 @@ class CarTest {
     @DisplayName("moveDistance 값이 최소값 이하이면 이동 거리는 그대로")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void not_ove_test(int randomNumber) {
+    void move_ShouldNotIncreaseMoveDistance_WhenBelowMinValue(int randomNumber) {
         // given
         Car car = new Car("pobi");
 
