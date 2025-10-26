@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.util.Parser;
 import racingcar.validator.Validator;
 
 import java.util.List;
@@ -20,15 +21,14 @@ class CarManagerTest {
     void setUp() {
         parser = new Parser();
         validator = new Validator();
-        carManager = new CarManager(parser, validator);
+        carManager = new CarManager(validator);
     }
 
     @DisplayName("자동차 이름에 중복이 없는 경우 List<Car>를 생성한다.")
     @Test
     void createCarList_WithUniqueNames_ShouldSucceed() {
         // given
-        String carNames = "pobi,woni,jun";
-
+        List<String> carNames = parser.parseCarName("pobi,woni,jun");
         // when
         List<Car> carList = assertDoesNotThrow(() -> carManager.createCarList(carNames));
 
@@ -43,7 +43,7 @@ class CarManagerTest {
     @Test
     void createCarList_WithDuplicateNames_ShouldThrowException() {
         // given
-        String carNames = "pobi,pobi,jun";
+        List<String> carNames = parser.parseCarName("pobi,woni,jun");
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> carManager.createCarList(carNames));
@@ -55,7 +55,7 @@ class CarManagerTest {
     @Test
     void createCarList_WithNameTooLong_ShouldThrowException() {
         // given
-        String carNames = "pobighgh,woni,jun";
+        List<String> carNames = parser.parseCarName("pobi,woni,jun");
 
         // when
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,

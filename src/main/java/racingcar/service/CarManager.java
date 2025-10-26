@@ -7,12 +7,10 @@ import racingcar.validator.Validator;
 import java.util.List;
 
 public class CarManager {
-    private final Parser parser;
     private final Validator validator;
     private Cars cars;
 
-    public CarManager(Parser parser, Validator validator) {
-        this.parser = parser;
+    public CarManager(Validator validator) {
         this.validator = validator;
     }
 
@@ -25,17 +23,11 @@ public class CarManager {
         return cars;
     }
 
-    public List<Car> createCarList(String carNames) {
-        List<Car> carList = parseCarNames(carNames).stream()
+    public List<Car> createCarList(List<String> carNames) {
+        List<Car> carList = carNames.stream()
                 .map(Car::new)
                 .toList();
         validator.validateDuplicateNames(carList);
         return carList;
-    }
-
-    private List<String> parseCarNames(String carNames) {
-        List<String> names = parser.parseCarName(carNames);
-        names.forEach(validator::validateNameLength);
-        return names;
     }
 }

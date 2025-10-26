@@ -18,7 +18,7 @@ public class RacingService {
         this.validator = validator;
     }
 
-    public void initCars(String carNames) {
+    public void initCars(List<String> carNames) {
         List<Car> carList = carManager.createCarList(carNames);
         carManager.createCars(carList);
     }

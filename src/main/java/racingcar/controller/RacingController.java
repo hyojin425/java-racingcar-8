@@ -26,7 +26,7 @@ public class RacingController {
     }
 
     private void startRepeatRacing() {
-        int repeatCount = Integer.parseInt(inputView.getRepeatCount());
+        int repeatCount = inputView.getRepeatCount();
         outputView.printResultHeader();
         printRepeatResult(repeatCount);
     }
