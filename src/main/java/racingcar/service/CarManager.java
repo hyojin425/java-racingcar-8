@@ -39,7 +39,7 @@ public class CarManager {
 
     public Cars getWinner() {
         List<Car> carList = cars.getCarList();
-        int maxDistance = findMacDistance(cars.getCarList());
+        int maxDistance = findMaxDistance(cars.getCarList());
 
         List<Car> winner = carList.stream()
                 .filter(car -> car.getMoveDistance() == maxDistance)
@@ -48,7 +48,7 @@ public class CarManager {
         return new Cars(winner);
     }
 
-    private int findMacDistance(List<Car> carList) {
+    private int findMaxDistance(List<Car> carList) {
         return carList.stream()
                 .mapToInt(Car::getMoveDistance)
                 .max()
