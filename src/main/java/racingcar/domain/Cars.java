@@ -3,13 +3,13 @@ package racingcar.domain;
 import java.util.List;
 public class Cars {
 
-    private List<Car> cars;
+    private List<Car> carList;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<Car> carList) {
+        this.carList = carList;
     }
 
     public List<Car> getCars() {
-        return cars;
+        return carList;
     }
 }
