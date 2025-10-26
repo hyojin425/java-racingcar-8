@@ -20,17 +20,22 @@ public class CarManager {
         return cars;
     }
 
+    public Cars createCars(List<Car> carList) {
+        cars = new Cars(carList);
+        return cars;
+    }
+
     public List<Car> createCarList(String carNames) {
-        List<Car> carList = parser.parseCarName(carNames)
-                .stream()
+        List<Car> carList = parseCarNames(carNames).stream()
                 .map(Car::new)
                 .toList();
         validator.validateDuplicateNames(carList);
         return carList;
     }
 
-    public Cars createCars(List<Car> carList) {
-        cars = new Cars(carList);
-        return cars;
+    private List<String> parseCarNames(String carNames) {
+        List<String> names = parser.parseCarName(carNames);
+        names.forEach(validator::validateNameLength);
+        return names;
     }
 }
