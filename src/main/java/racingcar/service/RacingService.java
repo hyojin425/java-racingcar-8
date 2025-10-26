@@ -21,7 +21,7 @@ public class RacingService {
 
     public void initCars(String carNames) {
         List<String> carNameList = getValidCarNames(carNames);
-        validator.validateDuplicateNames(carNameList);
+        validateDuplicateNames(carNameList);
         List<Car> carList = carManager.createCarList(carNameList);
         carManager.createCars(carList);
     }
@@ -44,5 +44,9 @@ public class RacingService {
         List<String> carNameList = parser.parseCarName(carNames);
         carNameList.forEach(validator::validateNameLength);
         return carNameList;
+    }
+
+    private void validateDuplicateNames(List<String> carNameList) {
+        validator.validateDuplicateNames(carNameList);
     }
 }
