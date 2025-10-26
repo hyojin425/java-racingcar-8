@@ -43,7 +43,7 @@ class CarManagerTest {
     @Test
     void createCarList_WithDuplicateNames_ShouldThrowException() {
         // given
-        List<String> carNames = parser.parseCarName("pobi,woni,jun");
+        List<String> carNames = parser.parseCarName("pobi,pobi,jun");
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> carManager.createCarList(carNames));
@@ -55,7 +55,7 @@ class CarManagerTest {
     @Test
     void createCarList_WithNameTooLong_ShouldThrowException() {
         // given
-        List<String> carNames = parser.parseCarName("pobi,woni,jun");
+        List<String> carNames = parser.parseCarName("pobighgh,woni,jun");
 
         // when
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
