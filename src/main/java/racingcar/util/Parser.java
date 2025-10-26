@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.util;
 
 import java.util.List;
 
@@ -8,5 +8,9 @@ public class Parser {
 
     public List<String> parseCarName(String carName) {
         return List.of(carName.split(DELIMITER));
+    }
+
+    public int parseRepeatCountAsInt(String repeatCount) {
+        return Integer.parseInt(repeatCount);
     }
 }
