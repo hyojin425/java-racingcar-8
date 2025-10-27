@@ -7,8 +7,11 @@ import java.util.List;
 
 public class OutputView {
 
+    private final String RESULT_HEADER = "실행 결과";
+    private final String MOVE_DISTANCE = "-";
+    private final String WINNER = "최종 우승자 : ";
     public void printResultHeader() {
-        System.out.println("실행 결과");
+        System.out.println(RESULT_HEADER);
     }
 
     public void printRacing(Cars cars) {
@@ -23,13 +26,13 @@ public class OutputView {
 
     private void printMoveDistance(int moveDistance) {
         for (int i = 0; i < moveDistance; i++) {
-            System.out.print("-");
+            System.out.print(MOVE_DISTANCE);
         }
     }
 
     public void printWinner(Cars cars) {
         String winnerNames = createWinnerNames(cars.getCarList());
-        System.out.print("최종 우승자 : " + winnerNames);
+        System.out.print(WINNER + winnerNames);
     }
 
     private String createWinnerNames(List<Car> carList) {
