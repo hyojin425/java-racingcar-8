@@ -38,20 +38,12 @@ public class CarManager {
     }
 
     public Cars getWinner() {
-        List<Car> carList = cars.getCarList();
-        int maxDistance = findMaxDistance(cars.getCarList());
+        int maxDistance = cars.getMaxDistance();
 
-        List<Car> winner = carList.stream()
+        List<Car> winner = cars.getCarList().stream()
                 .filter(car -> car.getMoveDistance() == maxDistance)
                 .collect(Collectors.toList());
 
         return new Cars(winner);
-    }
-
-    private int findMaxDistance(List<Car> carList) {
-        return carList.stream()
-                .mapToInt(Car::getMoveDistance)
-                .max()
-                .orElse(0);
     }
 }

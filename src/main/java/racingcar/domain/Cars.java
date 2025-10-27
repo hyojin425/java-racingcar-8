@@ -13,4 +13,11 @@ public class Cars {
     public List<Car> getCarList() {
         return carList;
     }
+
+    public int getMaxDistance() {
+        return carList.stream()
+                .mapToInt(Car::getMoveDistance)
+                .max()
+                .orElse(0);
+    }
 }
