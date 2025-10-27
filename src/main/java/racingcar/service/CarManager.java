@@ -2,17 +2,18 @@ package racingcar.service;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.utils.NumberGenerator;
 import racingcar.utils.RandomGenerator;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarManager {
-    private final RandomGenerator randomGenerator;
+    private final NumberGenerator numberGenerator;
     private Cars cars;
 
-    public CarManager(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
+    public CarManager(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
     }
 
     public Cars getCars() {
@@ -33,7 +34,7 @@ public class CarManager {
 
     public Cars moveCars() {
         cars.getCarList().forEach(
-                car -> car.move(randomGenerator.getRandomNumber()));
+                car -> car.move(numberGenerator.getRandomNumber()));
         return cars;
     }
 
